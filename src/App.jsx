@@ -10,7 +10,6 @@ import wind_icon from "../src/Components/Assects/wind.png";
 import { useState } from "react";
 
 const App = () => {
-  let api_key = "e9299ce5db85a255d8f23ea8361e5ddb";
   const [wicon, setwicon] = useState(cloud_icon);
 
   const search = async () => {
@@ -18,7 +17,9 @@ const App = () => {
     if (element[0].value === "") {
       return 0;
     }
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api_key}`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${
+      element[0].value
+    }&units=Metric&appid=${import.meta.env.VITE_API_KEY}`;
 
     let response = await fetch(url);
     let data = await response.json();
